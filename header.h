@@ -32,17 +32,18 @@ public:
     std::string capital;
     std::string ISO_A2;
     std::string flagFileLocation;
+    std::string adjacentCountry;
     sf::Sprite sprite;
     country(const country&) = default;
 
     country(std::ifstream& inputStream) {
-        inputStream >> name >> continent >> capital >> ISO_A2;
+        inputStream >> name >> continent >> capital >> ISO_A2 >> adjacentCountry;
         name = filter_input(name);
         continent = filter_input(continent);
         capital = filter_input(capital);
         flagFileLocation = "flag/" + ISO_A2 + ".png";
         
-        //cout << "->" << name << "|" << continent << "|" << capital <<  "|" << ISO_A2 << "|" << flagFileLocation << endl;
+        cout << "->" << name << "|" << continent << "|" << capital <<  "|" << ISO_A2 << "|" << flagFileLocation << endl;
         sf::Texture MapTexture;
 		
         if (MapTexture.loadFromFile("CountryOutline/" + name + ".png")) {
